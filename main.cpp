@@ -1,6 +1,7 @@
 ﻿#include <Novice.h>
 #include "Player.h"
 #include "Enemy.h"
+#include "ScreenPrintf.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -27,6 +28,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//敵
 	Enemy* enemy = new Enemy();
 	enemy->Initialize();
+
+	//文字
+	ScreenPrintf* screenPrintf = new ScreenPrintf();
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -75,6 +79,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		//敵
 		enemy->Draw();
+
+		//文字
+		screenPrintf->Draw(enemy->enemyAlive_);
 
 		///
 		/// ↑描画処理ここまで
